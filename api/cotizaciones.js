@@ -1,11 +1,18 @@
-import axios from 'axios';
-const url = 'api-dolar-argentina.herokuapp.com';
+import axios from 'axios'
 
-const cotizaciones = async (divisa) =>{
-    const cotiza = await axios.get(`${url}/${divisa}`)
-    const response = cotiza.data;
-    console.log(response)
-    return response
-}
+const url = axios.create({
+  baseURL:"https://api-dolar-argentina.herokuapp.com/api/"
+});
 
-cotizaciones('dolar')
+const cotizaciones = async (divisa) => {
+  const response = await url.get(`${divisa}`);
+  return response.data
+
+  
+};
+
+
+
+export default cotizaciones 
+
+
